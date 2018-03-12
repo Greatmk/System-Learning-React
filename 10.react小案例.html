@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <script type="text/babel">
+        let person = {
+            name: 'Great',
+            sex: '男',
+            age: 24,
+            address: '上海'
+        };
+
+        class PersonInfo extends React.Component{
+            render(){
+                return (
+                    <ul>
+                        <li>姓名:{this.props.name}</li>
+                        <li>性别:{this.props.sex}</li>
+                        <li>年龄:{this.props.age}</li>
+                        <li>坐标:{this.props.address}</li>
+                    </ul>
+                )
+            }
+        }
+        PersonInfo.propTypes = {
+            name: React.PropTypes.string.isRequired,
+            sex: React.PropTypes.string,
+            age: React.PropTypes.number.isRequired,
+            address: React.PropTypes.string
+        };
+        ReactDOM.render(
+            <PersonInfo name={person.name} sex={person.sex} age={person.age} address={person.address}/>,
+            document.getElementById('app1')
+        );
+        ReactDOM.render(
+            <PersonInfo {...person}/>,
+            document.getElementById('app2')
+        )
+    </script>
+</body>
+</html>

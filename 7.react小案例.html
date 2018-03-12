@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        let MyComponent = React.createClass({
+            handleClick: function () {
+                this.refs.getValue.focus()
+            },
+            render: function () {
+                return (
+                    <div>
+                        <input type="text" ref="getValue"/>
+                        <input type="button" value="点击获取焦点" onClick={this.handleClick}/>
+                    </div>
+                )
+            }
+        });
+        ReactDOM.render(
+            <MyComponent/>,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>

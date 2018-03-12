@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        let skills = ['javascript','html','css','java','python'];
+        ReactDOM.render(
+            <div>
+                {
+                    skills.map( (skill,index) => {
+                        return <h1 key={index}>所具备的技能{index+1}为:&nbsp;{skill}</h1>
+                    })
+                }
+            </div>,
+            document.getElementById('app')
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+       let LinkButton = React.createClass({
+           getInitialState: function () {
+             return {
+                 like: true
+             }
+           },
+           handleClick: function () {
+             this.setState({
+                 like: !this.state.like
+             })
+           },
+           render: function () {
+               let text = this.state.like ? '是': '不是';
+               return (
+                   <div>
+                       今天{text}星期天，我们需要学习！
+                       <button onClick={this.handleClick}>点击</button>
+                   </div>
+               )
+           }
+       });
+       ReactDOM.render(
+           <LinkButton/>,
+           document.getElementById('app')
+       )
+    </script>
+</body>
+</html>
