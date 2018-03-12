@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        let things = {
+            eat: '吃饭',
+            sleep: '睡觉',
+            doudou: '打豆豆'
+        };
+        class ThingsComponent extends React.Component{
+          constructor(props){
+              super(props)
+          }
+          render(){
+              return (
+                  <h1>每天要做的三件事情:&nbsp;{this.props.eat}, {this.props.sleep}, {this.props.doudou}</h1>
+              )
+          }
+        }
+        ReactDOM.render(
+            <ThingsComponent {...things}/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>
