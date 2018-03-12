@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class Lift extends React.Component{
+            constructor(props){
+                super(props);
+                console.log('constructor()---->创建组件对象');
+                this.state = {
+                    name: 'Tom'
+                }
+            }
+            componentWillMount(){
+                console.log('componentWillMount()---->将要挂载');
+
+                //延时更新state
+                setTimeout( () => {
+                    this.setState({
+                        name: 'Rose'
+                    })
+                },1000)
+            }
+            render(){
+                console.log('render()---->正在渲染中');
+                return (
+                    <div>
+                        <h2>生命周期组件测试标题</h2>
+                        <h3>姓名: {this.state.name}</h3>
+                        <h3>年龄: {this.props.age}</h3>
+                    </div>
+                )
+            }
+            componentDidMount(){
+                console.log('componentDidMount()---->已经挂载');
+            }
+
+            componentWillUpdate(){
+                console.log('componentWillUpdate()---->将要更新');
+            }
+
+            componentDidUpdate(){
+                console.log('componentDidUpdate()---->已经更新');
+            }
+
+            componentWillUnmount(){
+                console.log('componentWillUnmount()---->将要被移除');
+            }
+        }
+        ReactDOM.render(
+            <Lift age={25}/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class ClickComponent extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count: 0
+                }
+            }
+            handleClick(){
+                this.setState({
+                    count: this.state.count + 1
+                })
+            }
+            render(){
+                return (
+                    <div>
+                        <h2>点击下面按钮</h2>
+                        <button onClick={this.handleClick.bind(this)}>点击</button>
+                        <h2>你一共点击了: {this.state.count}次</h2>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <ClickComponent/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>
