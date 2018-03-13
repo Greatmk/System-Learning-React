@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class FormComponent extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                  name: '',
+                  password: '',
+                  gender: ''
+                }
+            }
+            getValue(name,event){
+                let newVal = {};
+                newVal[name] = event.target.value;
+                this.setState(newVal)
+            }
+            handleChange(e){
+                this.setState({
+                    gender: e.target.value
+                })
+            }
+            handleClick(){
+                console.log(this.state);
+            }
+            render(){
+
+                return (
+                    <div>
+                        <input type="text" placeholder="请输入您的姓名" onChange={this.getValue.bind(this,'name')}/><br/><br/>
+                        <input type="password" placeholder="请输入密码" onChange={this.getValue.bind(this,'password')}/><br/><br/>
+                        <GenderComponent chooseGender={this.handleChange.bind(this)}/><br/><br/>
+                        <button onClick={this.handleClick.bind(this)}>提交</button>
+                    </div>
+                )
+            }
+        }
+        class GenderComponent extends React.Component{
+            render(){
+                return (
+                    <select onChange={this.props.chooseGender}>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <FormComponent/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>

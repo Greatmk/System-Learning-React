@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class FormComponent extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    name: '',
+                    password: '',
+                    address: '',
+                    gender: ''
+                }
+            }
+            getUserName(e){
+                this.setState({
+                    name: e.target.value
+                })
+            }
+            getUserPwd(e){
+                this.setState({
+                    password: e.target.value
+                })
+            }
+            getUserAds(e){
+                this.setState({
+                    address: e.target.value
+                })
+            }
+            handleChange(e){
+                this.state.gender = e.target.value;
+            }
+            handleClick(){
+                console.log(this.state);
+            }
+            render(){
+                return (
+                    <div>
+                        用户名: <input type="text" placeholder="请输入用户名" onChange={(e) => this.getUserName(e)}/><br/><br/>
+                        登陆密码: <input type="password" placeholder="请输入密码" onChange={(e) => this.getUserPwd(e)}/><br/><br/>
+                        居住地: <input type="text" placeholder="请输入居住地" onChange={(e) => this.getUserAds(e)}/><br/><br/>
+                        性别: <GenderComponent selectValue={this.handleChange.bind(this)}/><br/><br/>
+                        <button onClick={this.handleClick.bind(this)}>提交</button>
+                    </div>
+                )
+            }
+        }
+        class GenderComponent extends React.Component{
+            render(){
+                return (
+                    <select onChange={this.props.selectValue}>
+                        <option value="">请选择</option>
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                )
+            }
+        }
+        ReactDOM.render(
+            <FormComponent/>,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+</html>
