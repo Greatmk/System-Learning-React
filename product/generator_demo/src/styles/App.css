@@ -1,9 +1,16 @@
 /* Base Application Styles */
 body {
+  margin: 0;
+  padding: 0;
   color: #fff;
-  background: #222;
+  background: blueviolet;
 }
-
+li{
+  list-style: none;
+}
+.index{
+  text-align: center;
+}
 .index img {
   margin: 40px auto;
   border-radius: 4px;
@@ -16,6 +23,8 @@ body {
   padding: 15px 0;
   text-align: center;
   border: 1px solid #000;
-  border-width: 1px 0;
   background: #666;
+}
+.index .page li{
+  margin: 20px 0;
 }
