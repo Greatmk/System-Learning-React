@@ -8,7 +8,7 @@
 
 ## 方法二：用generator-react-webpack快速搭建框架(工作中常用这个)
 >
->  1.首先用generator-react-webpack需要yeoman的支持的，所以先下载yeoman   npm install -g yo
+>  1.首先用generator-react-webpack需要yeoman的支持的，所以
 >  2.用命令行 npm install -g generator-react-webpack
 >  3.用命令行 mkdir demo 创建一个文件夹
 >  4.进入文件夹cd demo

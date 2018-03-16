@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props){
+                super(props);
+                this.state = {
+                    name: '',
+                    phone: '',
+                    address: '',
+                    sex: '男',
+                    password: '',
+                    checked: true
+                }
+            }
+            handleChange(e,v){
+                let getInfo = {};
+                getInfo[v] = e.target.value;
+                this.setState(getInfo)
+            }
+            handleClick(){
+                console.log(this.state)
+            }
+            render() {
+                return (
+                    <div className="App-intro">
+                        姓名: <input type='text' className='getval' placeholder='请输入您的姓名' onChange={(e) => this.handleChange(e,'name')}/><br/>
+                        电话: <input type='text'  className='getval' placeholder='请输入您的联系方式' onChange={(e) => this.handleChange(e,'phone')}/><br/>
+                        性别: 男 <input type='radio' value='男'  checked={ this.state.sex === '男' ? true : false } onChange={(e) => this.handleChange(e,'sex')}/>  女 <input type='radio' value='女'  checked={this.state.sex === '女' ? true : false}  onChange={(e) => this.handleChange(e,'sex')}/><br/>
+                        地址: <input type='text' className='getval'  placeholder='请输入您的居住地址' onChange={(e) => this.handleChange(e,'address')}/><br/>
+                        密码: <input type='password' className='getval'  placeholder='请输入您的登陆密码' onChange={(e) => this.handleChange(e,'password')}/><br/>
+                        <button style={{border: '1px solid #ccc',marginTop: '20px'}} onClick={() => this.handleClick()}>点击注册</button>
+                    </div>
+                );
+            }
+        }
+
+       ReactDOM.render(
+           <App/>,
+           document.getElementById('app')
+       )
+
+    </script>
+</body>
+</html>
