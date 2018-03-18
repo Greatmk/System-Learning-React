@@ -13,9 +13,10 @@ ReactDOM.render((
     <Router history={hashHistory}>
         <Route path='/' component={App}>
             <IndexRoute component={Home}></IndexRoute>
+            <Route path='/Home' component={Home}></Route>
             <Route path='/Ademo' component={Ademo}></Route>
             <Route path='/Bdemo' component={Bdemo}></Route>
-            <Route path='/Cdemo' component={Cdemo}></Route>
+            <Route path='/Cdemo/:username/:id' component={Cdemo}></Route>
         </Route>
     </Router>  
 ), document.getElementById('root'));

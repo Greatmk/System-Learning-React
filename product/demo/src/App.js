@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 
 class App extends Component {
   render() {
+    let to = `/Cdemo/C组建/121`;
     return (
       <div className="App">
         <header className="App-header">
@@ -13,9 +14,9 @@ class App extends Component {
         </header>
         <div className="App-intro">
           <ul>
-            <li><Link to="/Ademo" style={{ color: 'yellowgreen' }}>Ademo组建页面</Link></li>
-            <li><Link to="/Bdemo">Bdemo组建页面</Link></li>
-            <li><Link to="/Cdemo">Cdemo组建页面</Link></li>
+            <li><Link to="/Ademo" activeClassName='active'>Ademo组建页面</Link></li>
+            <li><Link to="/Bdemo" activeClassName='active'>Bdemo组建页面</Link></li>
+            <li><Link to={to} activeClassName='active'>Cdemo组建页面</Link></li>
           </ul>
           {this.props.children}
         </div>
